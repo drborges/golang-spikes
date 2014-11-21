@@ -2,12 +2,14 @@ package main
 
 import "fmt"
 
-func main() {
-	var message string = "I am a string"
-	var age = 29
-	const male bool = true
+type Log string
 
-	fmt.Println("Message:", message)
-	fmt.Println("Age:", age)
-	fmt.Println("Male:", male)
+func (l Log) Info(msg string) string {
+	return fmt.Sprint("[", l, "] ", msg)
+}
+
+func main() {
+	var log = Log("MyLogTag").Info("Well hello there...")
+
+	fmt.Println(log)
 }
